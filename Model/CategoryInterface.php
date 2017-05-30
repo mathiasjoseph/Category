@@ -6,7 +6,7 @@
  * Time: 16:09
  */
 
-namespace Miky\Component\Classification\Model;
+namespace Miky\Component\Category\Model;
 
 
 interface CategoryInterface
