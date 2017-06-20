@@ -33,9 +33,15 @@ class CategoryMetadata
     {
         $this->name = $name;
         $this->modelClass = $parameters['class'];
-        $this->managerServiceId = $parameters['manager'];
+        if ($parameters['manager'] == null){
+            $this->generateManagerServiceId();
+        }else{
+            $this->managerServiceId = $parameters['manager'];
+        }
+
         $this->parameters = $parameters;
     }
+
     /**
      * @param string $name
      * @param array $parameters
@@ -66,12 +72,13 @@ class CategoryMetadata
     /**
      * @return string
      */
-    public function getFormattedManagerServiceId()
+    public function generateManagerServiceId()
     {
-        $id = "miky_category.categories.".$this->name."_manager";
+        $id = "miky_category.categories." . $this->name . "_manager";
         $this->managerServiceId = $id;
-        return $id;
+        return $this->managerServiceId;
     }
+
     /**
      * @return string
      */
@@ -82,7 +89,7 @@ class CategoryMetadata
 
     public function getClassParameterId()
     {
-        return "miky_category.model.categories.".$this->name.".class";
+        return "miky_category.model.categories." . $this->name . ".class";
     }
 
     /**
@@ -105,6 +112,6 @@ class CategoryMetadata
 
     public function getResourceAlias()
     {
-        return "miky_category.".$this->name."_category";
+        return "miky_category." . $this->name . "_category";
     }
 }

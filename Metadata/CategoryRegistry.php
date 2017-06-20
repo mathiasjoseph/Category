@@ -48,6 +48,11 @@ class CategoryRegistry
         $this->metadata[$metadata->getName()] = $metadata;
     }
 
+    public function set($alias, CategoryMetadata $metadata)
+    {
+        $this->metadata[$alias] = $metadata;
+    }
+
 
     public function addFromAliasAndConfiguration($alias, array $configuration)
     {
