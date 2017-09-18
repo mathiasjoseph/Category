@@ -12,6 +12,7 @@ namespace Miky\Component\Category\Model;
 use Doctrine\Common\Collections\ArrayCollection;
 use Miky\Component\Core\Model\CommonModelInterface;
 use Miky\Component\Core\Model\CommonModelTrait;
+use Miky\Component\Media\Model\MediaInterface;
 
 class Category implements CategoryInterface, CommonModelInterface
 {
@@ -21,6 +22,26 @@ class Category implements CategoryInterface, CommonModelInterface
      * @var string
      */
     protected $name;
+
+    /**
+     * @var string
+     */
+    protected $slug;
+
+    /**
+     * @var string
+     */
+    protected $icon;
+
+    /**
+     * @var MediaInterface
+     */
+    protected $media;
+
+    /**
+     * @var int
+     */
+    protected $position;
 
     /**
      * @var string
@@ -57,7 +78,7 @@ class Category implements CategoryInterface, CommonModelInterface
 
     /**
      * @param string $name
-     * @return Category
+     * @return CategoryInterface
      */
     public function setName($name)
     {
@@ -75,7 +96,7 @@ class Category implements CategoryInterface, CommonModelInterface
 
     /**
      * @param string $description
-     * @return Category
+     * @return CategoryInterface
      */
     public function setDescription($description)
     {
@@ -93,7 +114,7 @@ class Category implements CategoryInterface, CommonModelInterface
 
     /**
      * @param mixed $parent
-     * @return Category
+     * @return CategoryInterface
      */
     public function setParent($parent)
     {
@@ -111,7 +132,7 @@ class Category implements CategoryInterface, CommonModelInterface
 
     /**
      * @param CategoryInterface[] $children
-     * @return Category
+     * @return CategoryInterface
      */
     public function setChildren($children)
     {
@@ -145,4 +166,67 @@ class Category implements CategoryInterface, CommonModelInterface
         $this->children->removeElement($child);
     }
 
+    /**
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * @param string $slug
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+    }
+
+    /**
+     * @return string
+     */
+    public function getIcon()
+    {
+        return $this->icon;
+    }
+
+    /**
+     * @param string $icon
+     */
+    public function setIcon($icon)
+    {
+        $this->icon = $icon;
+    }
+
+    /**
+     * @return MediaInterface
+     */
+    public function getMedia()
+    {
+        return $this->media;
+    }
+
+    /**
+     * @param MediaInterface $media
+     */
+    public function setMedia($media)
+    {
+        $this->media = $media;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPosition()
+    {
+        return $this->position;
+    }
+
+    /**
+     * @param int $position
+     */
+    public function setPosition($position)
+    {
+        $this->position = $position;
+    }
 }
