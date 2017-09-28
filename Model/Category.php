@@ -44,6 +44,11 @@ class Category implements CategoryInterface, CommonModelInterface
     protected $position;
 
     /**
+     * @var boolean
+     */
+    protected $asCategoryGroup;
+
+    /**
      * @var string
      */
     protected $description;
@@ -65,6 +70,7 @@ class Category implements CategoryInterface, CommonModelInterface
     public function __construct()
     {
         $this->children = new ArrayCollection();
+        $this->asCategoryGroup = false;
     }
 
 
@@ -229,4 +235,21 @@ class Category implements CategoryInterface, CommonModelInterface
     {
         $this->position = $position;
     }
+
+    /**
+     * @return bool
+     */
+    public function isAsCategoryGroup()
+    {
+        return $this->asCategoryGroup;
+    }
+
+    /**
+     * @param bool $asCategoryGroup
+     */
+    public function setAsCategoryGroup($asCategoryGroup)
+    {
+        $this->asCategoryGroup = $asCategoryGroup;
+    }
+
 }
